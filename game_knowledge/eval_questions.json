@@ -1,0 +1,749 @@
+{
+ "_comment": "Evaluation set for the retrieval pipeline. 'expect' lists the sections that may correctly answer the question. Used by tests and by chatbot/improve.py. This is NOT a list of canned answers: the chatbot never looks questions up here.",
+ "single": [
+  {
+   "q": "What does the Detective do?",
+   "expect": [
+    "roles.detective",
+    "night_actions.detective-night-action"
+   ]
+  },
+  {
+   "q": "whats the detectives job",
+   "expect": [
+    "roles.detective",
+    "night_actions.detective-night-action"
+   ]
+  },
+  {
+   "q": "I'm the investigator. What should I do?",
+   "expect": [
+    "roles.detective",
+    "night_actions.detective-night-action"
+   ]
+  },
+  {
+   "q": "How does the doctor work?",
+   "expect": [
+    "roles.doctor",
+    "night_actions.doctor-night-action"
+   ]
+  },
+  {
+   "q": "wat does the docter do",
+   "expect": [
+    "roles.doctor",
+    "night_actions.doctor-night-action"
+   ]
+  },
+  {
+   "q": "Can the Doctor save themselves?",
+   "expect": [
+    "roles.doctor",
+    "night_actions.doctor-night-action"
+   ]
+  },
+  {
+   "q": "can the medic heal himself more than once",
+   "expect": [
+    "roles.doctor",
+    "night_actions.doctor-night-action"
+   ]
+  },
+  {
+   "q": "What does Mafia do?",
+   "expect": [
+    "roles.mafia",
+    "night_actions.mafia-night-action-with-one-living-mafia"
+   ]
+  },
+  {
+   "q": "what is the mafia's goal",
+   "expect": [
+    "roles.mafia",
+    "game_overview.the-objective-and-the-two-teams"
+   ]
+  },
+  {
+   "q": "Do villagers have any power?",
+   "expect": [
+    "roles.villager"
+   ]
+  },
+  {
+   "q": "what can a normal player do at night",
+   "expect": [
+    "roles.villager",
+    "night_actions.villager-night-action"
+   ]
+  },
+  {
+   "q": "which roles are in the game",
+   "expect": [
+    "roles.role-overview",
+    "game_overview.player-counts-and-the-roles-in-a-game",
+    "game_overview.player-counts-and-the-roles-in-a-game-how-many-mafia-is-the-limit"
+   ]
+  },
+  {
+   "q": "who is on the town team",
+   "expect": [
+    "roles.town-team-and-mafia-team",
+    "roles.role-overview"
+   ]
+  },
+  {
+   "q": "how many mafia can there be",
+   "expect": [
+    "game_overview.player-counts-and-the-roles-in-a-game",
+    "game_overview.how-a-new-game-begins",
+    "game_overview.player-counts-and-the-roles-in-a-game-how-many-mafia-is-the-limit"
+   ]
+  },
+  {
+   "q": "how many detectives are there",
+   "expect": [
+    "game_overview.player-counts-and-the-roles-in-a-game",
+    "roles.detective",
+    "game_overview.player-counts-and-the-roles-in-a-game-how-many-mafia-is-the-limit"
+   ]
+  },
+  {
+   "q": "How do I check someone?",
+   "expect": [
+    "night_actions.detective-night-action",
+    "roles.detective"
+   ]
+  },
+  {
+   "q": "what happens when the detective investigates a mafia",
+   "expect": [
+    "night_actions.detective-night-action",
+    "roles.detective",
+    "night_actions.how-the-night-is-resolved"
+   ]
+  },
+  {
+   "q": "how does the mafia pick who to kill",
+   "expect": [
+    "night_actions.mafia-night-action-with-one-living-mafia",
+    "night_actions.mafia-target-choice-and-who-dies",
+    "roles.mafia"
+   ]
+  },
+  {
+   "q": "what is the shortlist for",
+   "expect": [
+    "night_actions.mafia-shortlist-when-there-are-several-living-mafia"
+   ]
+  },
+  {
+   "q": "why do I have to choose between 2 and 4 players",
+   "expect": [
+    "night_actions.mafia-shortlist-when-there-are-several-living-mafia"
+   ]
+  },
+  {
+   "q": "what happens if the mafia and doctor pick the same person",
+   "expect": [
+    "night_actions.mafia-target-choice-and-who-dies",
+    "night_actions.doctor-night-action",
+    "night_actions.how-the-night-is-resolved",
+    "roles.doctor"
+   ]
+  },
+  {
+   "q": "what is the order things happen at night",
+   "expect": [
+    "night_actions.how-the-night-is-resolved",
+    "game_phases.night-phase",
+    "night_actions.how-a-night-turn-works"
+   ]
+  },
+  {
+   "q": "What happens after I select someone?",
+   "expect": [
+    "troubleshooting.what-happens-after-i-choose-something",
+    "night_actions.how-the-night-is-resolved",
+    "night_actions.how-a-night-turn-works"
+   ]
+  },
+  {
+   "q": "how does a night turn work",
+   "expect": [
+    "night_actions.how-a-night-turn-works",
+    "game_phases.night-phase"
+   ]
+  },
+  {
+   "q": "what do villagers do during the night",
+   "expect": [
+    "night_actions.villager-night-action",
+    "roles.villager"
+   ]
+  },
+  {
+   "q": "what if mafia vote different people",
+   "expect": [
+    "night_actions.mafia-target-choice-and-who-dies"
+   ]
+  },
+  {
+   "q": "what does the previous mafia actions box show",
+   "expect": [
+    "night_actions.mafia-target-choice-and-who-dies"
+   ]
+  },
+  {
+   "q": "do dead players still get a turn",
+   "expect": [
+    "game_phases.eliminated-players",
+    "night_actions.what-happens-when-no-action-is-available"
+   ]
+  },
+  {
+   "q": "what happens in the morning",
+   "expect": [
+    "game_phases.day-morning-report",
+    "interface_guide.morning-screen"
+   ]
+  },
+  {
+   "q": "how long is the discussion",
+   "expect": [
+    "game_phases.day-discussion",
+    "interface_guide.discussion-screen"
+   ]
+  },
+  {
+   "q": "what does the START VOTING button do",
+   "expect": [
+    "interface_guide.discussion-screen",
+    "voting.how-voting-starts",
+    "game_phases.day-discussion"
+   ]
+  },
+  {
+   "q": "How does voting work?",
+   "expect": [
+    "voting.how-a-player-casts-a-vote",
+    "game_phases.day-voting",
+    "voting.how-voting-starts"
+   ]
+  },
+  {
+   "q": "what happens in a tie",
+   "expect": [
+    "voting.how-votes-are-counted-and-ties"
+   ]
+  },
+  {
+   "q": "can I vote for myself",
+   "expect": [
+    "voting.who-can-be-voted-for"
+   ]
+  },
+  {
+   "q": "can mafia vote for their partner",
+   "expect": [
+    "voting.who-can-be-voted-for",
+    "roles.mafia"
+   ]
+  },
+  {
+   "q": "is there a way to skip my vote",
+   "expect": [
+    "voting.no-skip-or-abstain-option",
+    "voting.no-skip-or-abstain-option-what-happens-if-a-player-does-not-vote"
+   ]
+  },
+  {
+   "q": "who sees my vote",
+   "expect": [
+    "voting.how-a-player-casts-a-vote",
+    "voting.who-sees-my-vote-are-votes-private"
+   ]
+  },
+  {
+   "q": "what happens after the vote is over",
+   "expect": [
+    "voting.what-happens-after-the-vote",
+    "game_phases.day-elimination",
+    "interface_guide.elimination-screen"
+   ]
+  },
+  {
+   "q": "do I see the role of the eliminated player",
+   "expect": [
+    "game_phases.day-elimination",
+    "voting.what-happens-after-the-vote",
+    "interface_guide.elimination-screen"
+   ]
+  },
+  {
+   "q": "how do I win",
+   "expect": [
+    "win_conditions.which-team-wins-when-the-mafia-is-gone-when-the-civilians-win",
+    "win_conditions.when-the-mafia-wins",
+    "game_overview.the-objective-and-the-two-teams"
+   ]
+  },
+  {
+   "q": "when does the mafia win",
+   "expect": [
+    "win_conditions.when-the-mafia-wins"
+   ]
+  },
+  {
+   "q": "how do the civilians win the game",
+   "expect": [
+    "win_conditions.which-team-wins-when-the-mafia-is-gone-when-the-civilians-win"
+   ]
+  },
+  {
+   "q": "when does the game end",
+   "expect": [
+    "win_conditions.when-the-game-checks-for-a-winner",
+    "win_conditions.when-the-mafia-wins",
+    "win_conditions.which-team-wins-when-the-mafia-is-gone-when-the-civilians-win"
+   ]
+  },
+  {
+   "q": "what does the final screen show",
+   "expect": [
+    "win_conditions.the-result-screen",
+    "interface_guide.game-over-screen"
+   ]
+  },
+  {
+   "q": "what is camorra",
+   "expect": [
+    "game_overview.what-camorra-is"
+   ]
+  },
+  {
+   "q": "how do I start a new game",
+   "expect": [
+    "game_overview.how-a-new-game-begins",
+    "interface_guide.setup-screen"
+   ]
+  },
+  {
+   "q": "how many players can play",
+   "expect": [
+    "game_overview.player-counts-and-the-roles-in-a-game",
+    "interface_guide.setup-screen",
+    "game_overview.what-camorra-is",
+    "game_overview.player-counts-and-the-roles-in-a-game-how-many-mafia-is-the-limit"
+   ]
+  },
+  {
+   "q": "can I play against the computer",
+   "expect": [
+    "game_overview.what-camorra-is"
+   ]
+  },
+  {
+   "q": "what is a round",
+   "expect": [
+    "game_overview.structure-of-a-round",
+    "game_phases.order-of-the-phases"
+   ]
+  },
+  {
+   "q": "does the game record what we say in discussion",
+   "expect": [
+    "game_phases.day-discussion",
+    "game_overview.what-camorra-is"
+   ]
+  },
+  {
+   "q": "what does the I'M READY button do",
+   "expect": [
+    "interface_guide.night-introduction-and-pass-screens",
+    "night_actions.how-a-night-turn-works"
+   ]
+  },
+  {
+   "q": "how do I turn off the sound",
+   "expect": [
+    "interface_guide.sound-button"
+   ]
+  },
+  {
+   "q": "are there sound effects",
+   "expect": [
+    "interface_guide.sound-button"
+   ]
+  },
+  {
+   "q": "what is SHOW MY ROLE for",
+   "expect": [
+    "interface_guide.role-assignment-screens",
+    "game_phases.role-assignment-phase"
+   ]
+  },
+  {
+   "q": "what is the robot button in the corner",
+   "expect": [
+    "interface_guide.about-the-ai-companion"
+   ]
+  },
+  {
+   "q": "is this chat private",
+   "expect": [
+    "interface_guide.about-the-ai-companion"
+   ]
+  },
+  {
+   "q": "how do I hide the detective result",
+   "expect": [
+    "interface_guide.detective-private-result-screen",
+    "night_actions.detective-night-action"
+   ]
+  },
+  {
+   "q": "how do I begin the next night",
+   "expect": [
+    "interface_guide.elimination-screen",
+    "game_phases.day-elimination"
+   ]
+  },
+  {
+   "q": "Why can't I use my ability?",
+   "expect": [
+    "troubleshooting.a-button-is-disabled-or-an-action-is-unavailable",
+    "troubleshooting.the-game-says-it-is-someone-else-s-turn"
+   ]
+  },
+  {
+   "q": "the continue button is greyed out",
+   "expect": [
+    "troubleshooting.a-button-is-disabled-or-an-action-is-unavailable",
+    "night_actions.mafia-shortlist-when-there-are-several-living-mafia"
+   ]
+  },
+  {
+   "q": "it says its someone else's turn",
+   "expect": [
+    "troubleshooting.the-game-says-it-is-someone-else-s-turn"
+   ]
+  },
+  {
+   "q": "i refreshed the page and lost my game",
+   "expect": [
+    "troubleshooting.i-refreshed-the-page"
+   ]
+  },
+  {
+   "q": "I don't know which phase we are in",
+   "expect": [
+    "troubleshooting.i-do-not-know-which-phase-the-game-is-in"
+   ]
+  },
+  {
+   "q": "what does this error message mean",
+   "expect": [
+    "troubleshooting.an-error-message-appeared"
+   ]
+  },
+  {
+   "q": "I don't understand my role",
+   "expect": [
+    "troubleshooting.i-do-not-understand-my-role",
+    "roles.role-overview"
+   ]
+  },
+  {
+   "q": "I'm confused about voting",
+   "expect": [
+    "troubleshooting.i-am-confused-about-voting",
+    "voting.how-a-player-casts-a-vote"
+   ]
+  },
+  {
+   "q": "How do I find the killer?",
+   "expect": [
+    "strategy_tips.how-to-reason-about-who-the-mafia-are",
+    "strategy_tips.tips-for-the-mafia",
+    "roles.detective",
+    "night_actions.detective-night-action",
+    "roles.mafia"
+   ]
+  },
+  {
+   "q": "how can we defeat the mafia",
+   "expect": [
+    "strategy_tips.how-to-reason-about-who-the-mafia-are",
+    "game_overview.the-objective-and-the-two-teams",
+    "win_conditions.which-team-wins-when-the-mafia-is-gone-when-the-civilians-win"
+   ]
+  },
+  {
+   "q": "any tips for playing the doctor",
+   "expect": [
+    "strategy_tips.tips-for-the-doctor"
+   ]
+  },
+  {
+   "q": "tips for being a good villager",
+   "expect": [
+    "strategy_tips.tips-for-villagers"
+   ]
+  },
+  {
+   "q": "how should the mafia act during the day",
+   "expect": [
+    "strategy_tips.tips-for-the-mafia"
+   ]
+  },
+  {
+   "q": "how do I know who is lying",
+   "expect": [
+    "strategy_tips.how-to-reason-about-who-the-mafia-are",
+    "strategy_tips.how-to-spot-suspicious-behavior"
+   ]
+  },
+  {
+   "q": "What am I supposed to do now?",
+   "expect": [
+    "night_actions.how-a-night-turn-works",
+    "game_phases.night-phase",
+    "night_actions.detective-night-action",
+    "troubleshooting.i-do-not-know-what-to-do-at-night"
+   ],
+   "phase": "NIGHT",
+   "role": null
+  },
+  {
+   "q": "What am I supposed to do now?",
+   "expect": [
+    "night_actions.detective-night-action",
+    "roles.detective",
+    "troubleshooting.i-do-not-know-what-to-do-at-night"
+   ],
+   "phase": "NIGHT",
+   "role": "Detective"
+  },
+  {
+   "q": "What should I do now?",
+   "expect": [
+    "night_actions.doctor-night-action",
+    "roles.doctor"
+   ],
+   "phase": "NIGHT",
+   "role": "Doctor"
+  },
+  {
+   "q": "what do I do now",
+   "expect": [
+    "voting.how-a-player-casts-a-vote",
+    "game_phases.day-voting",
+    "troubleshooting.i-am-confused-about-voting"
+   ],
+   "phase": "VOTING",
+   "role": null
+  },
+  {
+   "q": "what now",
+   "expect": [
+    "game_phases.day-discussion",
+    "interface_guide.discussion-screen",
+    "game_phases.day-morning-report"
+   ],
+   "phase": "DISCUSSION",
+   "role": null
+  },
+  {
+   "q": "It's night and I'm confused.",
+   "expect": [
+    "troubleshooting.i-do-not-know-what-to-do-at-night",
+    "game_phases.night-phase",
+    "night_actions.how-a-night-turn-works"
+   ],
+   "phase": "NIGHT",
+   "role": null
+  },
+  {
+   "q": "What does my role do?",
+   "expect": [
+    "roles.mafia",
+    "night_actions.mafia-night-action-with-one-living-mafia",
+    "night_actions.mafia-shortlist-when-there-are-several-living-mafia"
+   ],
+   "phase": "NIGHT",
+   "role": "Mafia"
+  },
+  {
+   "q": "how do I change how the chatbot talks",
+   "expect": [
+    "interface_guide.chat-settings-and-answer-styles"
+   ]
+  },
+  {
+   "q": "can I make the assistant answer like a robot",
+   "expect": [
+    "interface_guide.chat-settings-and-answer-styles"
+   ]
+  },
+  {
+   "q": "what are the answer styles",
+   "expect": [
+    "interface_guide.chat-settings-and-answer-styles"
+   ]
+  },
+  {
+   "q": "there is no sound",
+   "expect": [
+    "troubleshooting.i-cannot-hear-any-sound",
+    "interface_guide.sound-button"
+   ]
+  },
+  {
+   "q": "what sounds does the game make",
+   "expect": [
+    "interface_guide.sound-button"
+   ]
+  },
+  {
+   "q": "why is the music scary",
+   "expect": [
+    "interface_guide.sound-button"
+   ]
+  },
+  {
+   "q": "How can I identify suspicious behavior?",
+   "expect": [
+    "strategy_tips.how-to-spot-suspicious-behavior"
+   ]
+  },
+  {
+   "q": "What should I do when other players accuse me?",
+   "expect": [
+    "strategy_tips.how-to-defend-yourself-when-accused-or-blamed-in-the-discussion"
+   ]
+  },
+  {
+   "q": "How do I defend myself when accused?",
+   "expect": [
+    "strategy_tips.how-to-defend-yourself-when-accused-or-blamed-in-the-discussion"
+   ]
+  },
+  {
+   "q": "How can I avoid making suspicious statements?",
+   "expect": [
+    "strategy_tips.mafia-strategy-how-to-avoid-suspicion"
+   ]
+  },
+  {
+   "q": "what should i consider before voting",
+   "expect": [
+    "strategy_tips.what-to-consider-before-voting"
+   ]
+  },
+  {
+   "q": "What are some useful strategies for the Mafia?",
+   "expect": [
+    "strategy_tips.mafia-strategy-how-to-avoid-suspicion",
+    "strategy_tips.tips-for-the-mafia",
+    "strategy_tips.how-to-reason-about-who-the-mafia-are"
+   ]
+  }
+ ],
+ "conversations": [
+  {
+   "name": "detective follow-ups",
+   "turns": [
+    {
+     "q": "What does the Detective do?",
+     "expect": [
+      "roles.detective",
+      "night_actions.detective-night-action"
+     ]
+    },
+    {
+     "q": "When can I use it?",
+     "expect": [
+      "night_actions.detective-night-action",
+      "roles.detective",
+      "night_actions.how-a-night-turn-works"
+     ]
+    },
+    {
+     "q": "Where do I click?",
+     "expect": [
+      "interface_guide.night-action-screen",
+      "night_actions.detective-night-action",
+      "interface_guide.detective-private-result-screen",
+      "night_actions.how-a-night-turn-works"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "doctor self save",
+   "turns": [
+    {
+     "q": "tell me about the doctor",
+     "expect": [
+      "roles.doctor",
+      "night_actions.doctor-night-action"
+     ]
+    },
+    {
+     "q": "can they protect themselves?",
+     "expect": [
+      "roles.doctor",
+      "night_actions.doctor-night-action"
+     ]
+    },
+    {
+     "q": "what about the mafia?",
+     "expect": [
+      "roles.mafia"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "voting then tie",
+   "turns": [
+    {
+     "q": "how does voting work",
+     "expect": [
+      "voting.how-a-player-casts-a-vote",
+      "game_phases.day-voting",
+      "voting.how-voting-starts"
+     ]
+    },
+    {
+     "q": "and if there is a tie?",
+     "expect": [
+      "voting.how-votes-are-counted-and-ties"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mafia explanation then simpler",
+   "turns": [
+    {
+     "q": "what does mafia do at night",
+     "expect": [
+      "roles.mafia",
+      "night_actions.mafia-night-action-with-one-living-mafia",
+      "night_actions.mafia-shortlist-when-there-are-several-living-mafia"
+     ]
+    },
+    {
+     "q": "I still don't understand. Can you explain more simply?",
+     "expect": [
+      "roles.mafia",
+      "night_actions.mafia-night-action-with-one-living-mafia",
+      "night_actions.mafia-shortlist-when-there-are-several-living-mafia"
+     ]
+    }
+   ]
+  }
+ ]
+}

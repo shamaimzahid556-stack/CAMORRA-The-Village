@@ -1,0 +1,52 @@
+{
+  "_comment": "Numbers and names used by the knowledge files via {{placeholders}}. chatbot/verify_rules.py checks every value against the real game engine, so these cannot silently go out of date.",
+  "min_players": 6,
+  "max_players": 15,
+  "min_mafia": 1,
+  "max_mafia": 3,
+  "detective_count": 1,
+  "doctor_count": 1,
+  "min_villagers": 1,
+  "discussion_seconds": 180,
+  "shortlist_min": 2,
+  "shortlist_max": 4,
+  "doctor_self_saves": 1,
+  "villager_activities": [
+    "Study in your room",
+    "Read quietly",
+    "Write in your diary",
+    "Look through the window",
+    "Go to sleep"
+  ],
+  "roles": {
+    "Mafia": "Mafia",
+    "Detective": "Town",
+    "Doctor": "Town",
+    "Villager": "Town"
+  },
+  "civilians_winner_label": "Civilians",
+  "mafia_winner_label": "Mafia",
+  "buttons": [
+    "START THE GAME",
+    "SHOW MY ROLE",
+    "HIDE MY ROLE",
+    "CONTINUE",
+    "BEGIN NIGHT",
+    "I'M READY",
+    "BEGIN DISCUSSION",
+    "START VOTING",
+    "BEGIN NEXT NIGHT",
+    "VIEW GAME RESULT",
+    "HIDE RESULT & CONTINUE",
+    "NEW GAME"
+  ],
+  "answer_styles": [
+    "Friendly",
+    "Personal",
+    "Robotic",
+    "Beginner",
+    "Concise",
+    "Detailed",
+    "Noir narrator"
+  ]
+}
