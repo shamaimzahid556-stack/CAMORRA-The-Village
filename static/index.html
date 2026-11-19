@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAMORRA — The Village</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Non-blocking: the game renders immediately with fallback fonts if this cannot load (offline / LAN play). -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    <link rel="stylesheet" href="/static/style.css?v=hardening-1">
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="/static/chatbot.css?v=hardening-1">
+    <link rel="stylesheet" href="/static/sound.css?v=hardening-1">
+</head>
+<body>
+<div class="grain"></div>
+<main class="screen">
+
+    <div class="game-container">
+
+    <!-- LEFT SIDE: CAMORRA LOGO & START BUTTON -->
+    <div class="left-hero-section">
+    </div>
+
+    <!-- RIGHT SIDE: SETUP PANEL -->
+    <section id="setup" class="panel active">
+        <p class="eyebrow">A SOCIAL DEDUCTION GAME</p>
+        <h2> WAITING FOR PLAYERS</h2>
+        <p class="subtitle">The village is watching. Someone is lying.</p>
+
+        <div class="controls single-control">
+            <label>
+                TOTAL CHARACTERS
+                <select id="totalPlayers"></select>
+            </label>
+        </div>
+
+        <div class="name-settings">
+            <div class="role-title">PLAYER NAMES</div>
+            <div id="humanNames"></div>
+            <p class="name-hint">Enter the name of every player. Everyone in this game is a real player.</p>
+        </div>
+
+        <div class="role-settings">
+            <div class="role-title">CHOOSE THE VILLAGE ROLES</div>
+            <div class="role-controls">
+                <label class="role-box">
+                    <span>MAFIA</span>
+                    <select id="mafiaCount">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </label>
+                <div class="fixed-role role-box">
+                    <span>DETECTIVE</span>
+                    <strong>1</strong>
+                </div>
+                <div class="fixed-role role-box">
+                    <span>DOCTOR</span>
+                    <strong>1</strong>
+                </div>
+                <div class="villager-display role-box">
+                    <span>VILLAGERS</span>
+                    <strong id="villagerCount">3</strong>
+                </div>
+            </div>
+            <div class="role-summary">
+                <span id="roleTotal">3 / 6 roles selected</span>
+                <span id="roleStatus">✓ Valid setup</span>
+            </div>
+        </div>
+
+        <p id="errorMessage" class="error" hidden></p>
+    </section>
+
+    <button id="startGameButton" class="primary hero-start-btn" type="button">START THE GAME</button>
+
+</div>
+    <!-- ROLE ASSIGNMENT -->
+    <section id="roleAssignment" class="panel hidden">
+    <div class="assignment-frame">
+        <p class="eyebrow">ROLE ASSIGNMENT</p>
+        <h1 id="roleAssignmentTitle">PASS THE DEVICE</h1>
+        <p id="roleAssignmentMessage" class="subtitle">Pass the device to Player 1.</p>
+        <div id="roleAssignmentStage" class="private-stage">
+            <div class="pass-icon">◈</div>
+            <h2 id="roleAssignmentPlayer">PLAYER 1</h2>
+            <p>Only this player should look at the screen.</p>
+            <button id="showRoleButton" class="primary" type="button">SHOW MY ROLE</button>
+        </div>
+        <div id="roleRevealCard" class="role-card hidden">
+            <p class="eyebrow">YOUR PRIVATE ROLE</p>
+            <h2 id="roleRevealRole">ROLE</h2>
+            <p id="roleRevealDescription"></p>
+            <div id="mafiaPartners" class="partner-box hidden"></div>
+            <button id="hideRoleButton" class="primary" type="button">HIDE MY ROLE</button>
+        </div>
+    </div>
+</section>
+
+<!-- PASS TO NEXT ROLE PLAYER -->
+<section id="rolePass" class="panel hidden">
+    <div class="assignment-frame">
+        <p class="eyebrow">ROLE ASSIGNMENT</p>
+        <h1 id="rolePassTitle">PASS THE DEVICE</h1>
+        <p id="rolePassMessage" class="subtitle">Pass the device to Player 2.</p>
+        <div class="private-stage">
+            <div class="pass-icon">◈</div>
+            <h2 id="rolePassPlayer">PLAYER 2</h2>
+            <p>Do not show the previous player's role.</p>
+            <button id="nextRoleButton" class="primary" type="button">CONTINUE</button>
+        </div>
+    </div>
+</section>
+
+    <!-- NIGHT INTRO -->
+    <section id="nightIntro" class="panel hidden">
+        <div class="night-frame">
+            <p class="eyebrow">THE VILLAGE FALLS SILENT</p>
+            <h1 id="nightIntroTitle">NIGHT 1</h1>
+            <p class="subtitle">Everyone return to their houses. The night begins.</p>
+            <div id="nightPlayerRoster" class="night-player-roster" aria-label="Players in the village"></div>
+            <button id="beginNightButton" class="primary" type="button">BEGIN NIGHT</button>
+        </div>
+    </section>
+
+    <!-- NIGHT PASS -->
+    <section id="nightPass" class="panel hidden">
+        <div class="night-frame">
+            <p class="eyebrow" id="nightPassEyebrow">NIGHT 1</p>
+            <h1>PASS THE DEVICE</h1>
+            <p class="subtitle">Only the named player should look at the screen.</p>
+            <div class="private-stage">
+                <img id="nightPassAvatar" class="night-feature-avatar" alt="" aria-hidden="true">
+                <div class="pass-icon">◈</div>
+                <h2 id="nightPassPlayer">PLAYER</h2>
+                <p id="nightPassMessage">Pass the device to this player.</p>
+                <button id="nightReadyButton" class="primary" type="button">I'M READY</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- NIGHT ACTION -->
+    <section id="night" class="panel hidden">
+        <div class="night-frame">
+            <header class="topbar">
+                <div class="night-actor">
+                    <img id="nightActorAvatar" class="night-feature-avatar" alt="" aria-hidden="true">
+                    <div><p id="nightTitle" class="eyebrow">NIGHT 1</p><h2 id="nightPlayerName">PLAYER</h2></div>
+                </div>
+                <span id="nightRoleBadge" class="badge">ROLE</span>
+            </header>
+            <div id="nightActionArea" class="action-area"></div>
+        </div>
+    </section>
+
+    <!-- MORNING -->
+    <section id="morning" class="panel hidden">
+        <div class="morning-frame">
+            <p class="eyebrow">MORNING</p>
+            <h1 id="morningTitle">MORNING 1</h1>
+            <div id="morningResults" class="results-card"></div>
+            <button id="beginDiscussionButton" class="primary" type="button">BEGIN DISCUSSION</button>
+        </div>
+    </section>
+
+    <!-- DISCUSSION -->
+    <section id="discussion" class="panel hidden">
+        <div class="discussion-frame">
+            <p class="eyebrow">DAY <span id="discussionDay">1</span></p>
+            <h1>DISCUSSION</h1>
+            <div class="timer" id="discussionTimer">03:00</div>
+            <p class="subtitle">Talk to each other in person. The moderator does not listen to the conversation.</p>
+            <button id="startVotingButton" class="primary" type="button">START VOTING</button>
+        </div>
+    </section>
+
+    <!-- VOTING PASS -->
+    <section id="votePass" class="panel hidden">
+        <div class="night-frame">
+            <p class="eyebrow" id="votePassEyebrow">DAY VOTING</p>
+            <h1>PASS THE DEVICE</h1>
+            <p class="subtitle">Only the named player should look at the screen.</p>
+            <div class="private-stage">
+                <div class="pass-icon">◈</div>
+                <h2 id="votePassPlayer">PLAYER</h2>
+                <p>Choose privately who you want eliminated.</p>
+                <button id="voteReadyButton" class="primary" type="button">I'M READY</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- VOTING -->
+    <section id="voting" class="panel hidden">
+        <div class="night-frame">
+            <header class="topbar">
+                <div class="night-actor">
+                    <img id="votingAvatar" class="night-feature-avatar" alt="" aria-hidden="true">
+                    <div><p id="votingEyebrow" class="eyebrow">DAY 1 — VOTE</p><h2 id="votingPlayer">PLAYER</h2></div>
+                </div>
+                <span class="badge">VOTING</span>
+            </header>
+            <div id="votingArea" class="action-area"></div>
+        </div>
+    </section>
+
+    <!-- ELIMINATION -->
+    <section id="elimination" class="panel hidden">
+        <div class="night-frame">
+            <p class="eyebrow">THE MODERATOR HAS COUNTED THE VOTES</p>
+            <h1 id="eliminationTitle">PLAYER ELIMINATED</h1>
+            <div class="results-card">
+                <h2 id="eliminatedName">PLAYER</h2>
+                <p id="eliminatedRole">ROLE</p>
+                <p id="tieMessage" class="muted"></p>
+            </div>
+            <button id="continueGameButton" class="primary" type="button">CONTINUE</button>
+        </div>
+    </section>
+
+    <!-- Global error banner (visible on every screen) -->
+    <div id="globalError" class="global-error" hidden></div>
+
+    <!-- GAME OVER -->
+    <section id="gameOver" class="panel hidden">
+        <div class="night-frame">
+            <p class="eyebrow">THE GAME HAS ENDED</p>
+            <h1 id="gameOverTitle">GAME OVER</h1>
+            <p id="gameOverMessage" class="subtitle"></p>
+            <div id="finalPlayers" class="results-card"></div>
+            <button id="restartButton" class="primary" type="button">NEW GAME</button>
+        </div>
+    </section>
+
+</main>
+<script src="/static/game.js?v=hardening-1"></script>
+<script src="/static/chatbot.js?v=hardening-1"></script>
+<script src="/static/sound.js?v=hardening-1"></script>
+</body>
+</html>
