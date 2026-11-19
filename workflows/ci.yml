@@ -1,0 +1,27 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - run: pip install -r requirements.txt -r requirements-dev.txt
+      - name: Compile all Python
+        run: python -m compileall -q .
+      - name: JavaScript syntax
+        run: for f in static/*.js; do node --check "$f"; done
+      - name: Unit, security and game-flow tests (includes the HTTP tests when httpx is installed)
+        run: python -m unittest discover -s tests -v
+      - name: Rulebook facts match the game engine
+        run: python -m chatbot.verify_rules
+      - name: Chatbot benchmark (offline, deterministic; fails below target)
+        run: python -m unittest tests.test_benchmark -v
+      - name: Dependency vulnerability scan
+        run: pip install pip-audit && pip-audit -r requirements.txt
