@@ -1,0 +1,6 @@
+# Compatible-release pins (tested API surface: FastAPI route/middleware/pydantic v2). For a fully reproducible install run
+#   pip install pip-tools && pip-compile --generate-hashes requirements.txt -o requirements.lock
+# on a machine with internet access and install from requirements.lock. See DEPLOYMENT.md > Dependencies.
+fastapi>=0.110,<0.116
+uvicorn[standard]>=0.27,<0.33
+pydantic>=2.5,<3
